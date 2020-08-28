@@ -2,6 +2,7 @@ package xyz.treppi.lobby.events;
 
 import java.util.HashMap;
 
+import org.bukkit.GameMode;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -58,7 +59,13 @@ public class BuildMode implements Listener, CommandExecutor {
 		String uuid = p.getUniqueId().toString();
 		buildMode.put(uuid, build);
 		
-		if(build) p.sendMessage("§ayou can now build");
-		else p.sendMessage("§cyou cant build any longer :o");
+		if(build) {
+			p.sendMessage("§ayou can now build");
+			p.setGameMode(GameMode.CREATIVE);
+		}
+		else {
+			p.setGameMode(GameMode.ADVENTURE);
+			p.sendMessage("§cyou cant build any longer :o");
+		}
 	}
 }

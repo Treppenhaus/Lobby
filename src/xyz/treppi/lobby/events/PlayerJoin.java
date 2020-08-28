@@ -1,5 +1,6 @@
 package xyz.treppi.lobby.events;
 
+import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -18,6 +19,7 @@ public class PlayerJoin implements Listener {
 		
 		p.getInventory().clear();
 		p.getInventory().setItem(0, Compass.getItem());
+		p.setGameMode(GameMode.ADVENTURE);
 		e.setJoinMessage("§b+ §7"+p.getName());
 		
 		if(spawn != null) p.teleport(spawn.getLocation());
