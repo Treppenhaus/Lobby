@@ -7,6 +7,7 @@ import org.bukkit.event.player.PlayerJoinEvent;
 
 import xyz.treppi.lobby.LobbyLocation;
 import xyz.treppi.lobby.LocationManager;
+import xyz.treppi.lobby.compass.Compass;
 
 public class PlayerJoin implements Listener {
 	
@@ -15,7 +16,8 @@ public class PlayerJoin implements Listener {
 		Player p = e.getPlayer();
 		LobbyLocation spawn = LocationManager.getLocation("spawn");
 		
-		
+		p.getInventory().clear();
+		p.getInventory().setItem(0, Compass.getItem());
 		e.setJoinMessage("§b+ §7"+p.getName());
 		
 		if(spawn != null) p.teleport(spawn.getLocation());
