@@ -1,0 +1,11 @@
+name: Lobby
+main: xyz.treppi.lobby.LobbyPlugin
+version: 1.0
+
+author: treppi.xyz
+
+commands:
+  l:
+    description: lobby command
+  build:
+    description: "toggle buildmode"
