@@ -2,6 +2,7 @@ package xyz.treppi.lobby;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Random;
 
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -19,6 +20,7 @@ import xyz.treppi.lobby.events.NoPvP;
 import xyz.treppi.lobby.events.NoWeather;
 import xyz.treppi.lobby.events.PlayerJoin;
 import xyz.treppi.lobby.events.PlayerLeave;
+import xyz.treppi.lobby.soup.Soup;
 
 public class LobbyPlugin extends JavaPlugin {
 	private static String PATH = "plugins/Lobby/config.yml";
@@ -43,6 +45,8 @@ public class LobbyPlugin extends JavaPlugin {
 		pm.registerEvents(new Compass(), this);
 		
 		pm.registerEvents(new NoWeather(), this);
+		
+		pm.registerEvents(new Soup(), this);
 	}
 	public static FileConfiguration getPluginConfig() {
 		return YamlConfiguration.loadConfiguration(new File(PATH));
@@ -53,5 +57,14 @@ public class LobbyPlugin extends JavaPlugin {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	public static int getRandomNumberInRange(int min, int max) {
+
+		if (min >= max) {
+			throw new IllegalArgumentException("max must be greater than min");
+		}
+
+		Random r = new Random();
+		return r.nextInt((max - min) + 1) + min;
 	}
 }

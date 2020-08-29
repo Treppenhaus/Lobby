@@ -9,6 +9,7 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import xyz.treppi.lobby.LobbyLocation;
 import xyz.treppi.lobby.LocationManager;
 import xyz.treppi.lobby.compass.Compass;
+import xyz.treppi.lobby.soup.Soup;
 
 public class PlayerJoin implements Listener {
 	
@@ -19,7 +20,8 @@ public class PlayerJoin implements Listener {
 		
 		p.getInventory().clear();
 		p.getInventory().setItem(0, Compass.getItem());
-		p.setGameMode(GameMode.ADVENTURE);
+		p.getInventory().setItem(1, Soup.getSoupItem());
+		p.setGameMode(GameMode.SURVIVAL);
 		e.setJoinMessage("§b+ §7"+p.getName());
 		
 		if(spawn != null) p.teleport(spawn.getLocation());
