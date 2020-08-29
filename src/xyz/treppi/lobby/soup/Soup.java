@@ -1,6 +1,5 @@
 package xyz.treppi.lobby.soup;
 
-import java.util.ArrayList;
 
 import org.bukkit.Material;
 import org.bukkit.entity.Entity;
@@ -22,7 +21,6 @@ public class Soup implements Listener {
 	@EventHandler
 	public void onSoup(PlayerInteractEvent e) {
 		Player p = e.getPlayer();
-		p.sendMessage("a");
 		
 		if(p.getItemInHand() == null) return;
 		if(!p.getItemInHand().hasItemMeta()) return;
