@@ -21,12 +21,12 @@ public class Soup implements Listener {
 	@EventHandler
 	public void onSoup(PlayerInteractEvent e) {
 		Player p = e.getPlayer();
+		ItemStack hand = p.getItemInHand();
 		
-		if(p.getItemInHand() == null) return;
-		if(!p.getItemInHand().hasItemMeta()) return;
-		ItemStack soup = p.getItemInHand();
+		if(hand == null) return;
+		if(!hand.hasItemMeta()) return;
 		
-		if(soup.getItemMeta().getDisplayName().equalsIgnoreCase(getSoupItem().getItemMeta().getDisplayName())) {
+		if(hand.getItemMeta().getDisplayName().equalsIgnoreCase(getSoupItem().getItemMeta().getDisplayName())) {
 			p.setItemInHand(getEmptyItem());
 		}
 	}
@@ -35,7 +35,6 @@ public class Soup implements Listener {
 		Player p = e.getPlayer();
 		
 		if(p.getItemInHand() == null) return;
-		
 		ItemStack item = e.getItemDrop().getItemStack();
 		
 		if(item.getItemMeta().getDisplayName().equalsIgnoreCase(getEmptyItem().getItemMeta().getDisplayName())) {
