@@ -31,7 +31,7 @@ public class Compass implements Listener {
 	public static Inventory getInventory() {
 		if(compassInventory != null) return compassInventory;
 		
-		Inventory inv = Bukkit.createInventory(null, 3*9, "§8>> §3§lCOMPASS");
+		Inventory inv = Bukkit.createInventory(null, 3*9, "§8>> §3§lCompass");
 		for(CompassItem item : items) inv.setItem(item.getSlot(), item.getIcon());
 		compassInventory = inv;
 		
