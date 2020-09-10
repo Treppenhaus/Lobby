@@ -20,6 +20,7 @@ import xyz.treppi.lobby.events.NoPvP;
 import xyz.treppi.lobby.events.NoWeather;
 import xyz.treppi.lobby.events.PlayerJoin;
 import xyz.treppi.lobby.events.PlayerLeave;
+import xyz.treppi.lobby.forbiddencommands.CommandListener;
 import xyz.treppi.lobby.soup.Soup;
 
 public class LobbyPlugin extends JavaPlugin {
@@ -46,6 +47,7 @@ public class LobbyPlugin extends JavaPlugin {
 		
 		pm.registerEvents(new NoWeather(), this);
 		
+		pm.registerEvents(new CommandListener(), this);
 		pm.registerEvents(new Soup(), this);
 	}
 	public static FileConfiguration getPluginConfig() {
