@@ -22,7 +22,7 @@ public class Compass implements Listener {
 		ItemStack compass = new ItemStack(Material.COMPASS);
 		ItemMeta meta = compass.getItemMeta();
 		
-		meta.setDisplayName("§aGame Menu");
+		meta.setDisplayName("Â§aGame Menu");
 		compass.setItemMeta(meta);
 		
 		return compass;
@@ -31,7 +31,7 @@ public class Compass implements Listener {
 	public static Inventory getInventory() {
 		if(compassInventory != null) return compassInventory;
 		
-		Inventory inv = Bukkit.createInventory(null, 3*9, "§8>> §3§lCompass");
+		Inventory inv = Bukkit.createInventory(null, 3*9, "Â§8>> Â§3Â§lCompass");
 		for(CompassItem item : items) inv.setItem(item.getSlot(), item.getIcon());
 		compassInventory = inv;
 		
@@ -70,7 +70,7 @@ public class Compass implements Listener {
 	public static void fillItemList() {
 		ItemStack spawn = new ItemStack(Material.MAGMA_CREAM);
 		ItemMeta spawnMeta = spawn.getItemMeta();
-		spawnMeta.setDisplayName("§cSpawn");
+		spawnMeta.setDisplayName("Â§cSpawn");
 		
 		spawn.setItemMeta(spawnMeta);
 		items.add(new CompassItem(spawn, "spawn", 13));
@@ -78,7 +78,7 @@ public class Compass implements Listener {
 		
 		ItemStack sumo = new ItemStack(Material.PRISMARINE_SHARD);
 		ItemMeta sumoMeta = sumo.getItemMeta();
-		sumoMeta.setDisplayName("§cSumo");
+		sumoMeta.setDisplayName("Â§cSumo");
 		
 		sumo.setItemMeta(sumoMeta);
 		items.add(new CompassItem(sumo, "sumo", 10));
@@ -86,7 +86,7 @@ public class Compass implements Listener {
 		
 		ItemStack bridging = new ItemStack(Material.BRICK);
 		ItemMeta bridgingMeta = bridging.getItemMeta();
-		bridgingMeta.setDisplayName("§cBridge");
+		bridgingMeta.setDisplayName("Â§cBridge");
 		
 		bridging.setItemMeta(bridgingMeta);
 		items.add(new CompassItem(bridging, "bridge", 16));

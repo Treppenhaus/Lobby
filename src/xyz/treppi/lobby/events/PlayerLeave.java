@@ -10,6 +10,6 @@ public class PlayerLeave implements Listener {
 	@EventHandler
 	public void onLeave(PlayerQuitEvent e) {
 		Player p = e.getPlayer();
-		e.setQuitMessage("ง3- ง7"+p.getName());
+		e.setQuitMessage("ยง3- ยง7"+p.getName());
 	}
 }

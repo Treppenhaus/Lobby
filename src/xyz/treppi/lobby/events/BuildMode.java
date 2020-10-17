@@ -60,12 +60,12 @@ public class BuildMode implements Listener, CommandExecutor {
 		buildMode.put(uuid, build);
 		
 		if(build) {
-			p.sendMessage("§ayou can now build");
+			p.sendMessage("Â§ayou can now build");
 			p.setGameMode(GameMode.CREATIVE);
 		}
 		else {
 			p.setGameMode(GameMode.ADVENTURE);
-			p.sendMessage("§cyou cant build any longer :o");
+			p.sendMessage("Â§cyou cant build any longer :o");
 		}
 	}
 }

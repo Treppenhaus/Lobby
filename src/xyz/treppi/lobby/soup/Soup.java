@@ -60,7 +60,7 @@ public class Soup implements Listener {
 		ItemStack soup = new ItemStack(Material.MUSHROOM_SOUP);
 		ItemMeta soupMeta = soup.getItemMeta();
 		
-		soupMeta.setDisplayName("§cSoup :o §7(Rightclick)");
+		soupMeta.setDisplayName("Â§cSoup :o Â§7(Rightclick)");
 		
 		soup.setItemMeta(soupMeta);
 		return soup;
@@ -71,7 +71,7 @@ public class Soup implements Listener {
 		ItemStack empty = new ItemStack(Material.BOWL);
 		ItemMeta emptyMeta = empty.getItemMeta();
 		
-		emptyMeta.setDisplayName("§cdrop me");
+		emptyMeta.setDisplayName("Â§cdrop me");
 		
 		empty.setItemMeta(emptyMeta);
 		return empty;

@@ -22,7 +22,7 @@ public class PlayerJoin implements Listener {
 		p.getInventory().setItem(0, Compass.getItem());
 		p.getInventory().setItem(1, Soup.getSoupItem());
 		p.setGameMode(GameMode.SURVIVAL);
-		e.setJoinMessage("งb+ ง7"+p.getName());
+		e.setJoinMessage("ยงb+ ยง7"+p.getName());
 		
 		if(spawn != null) p.teleport(spawn.getLocation());
 		else p.sendMessage("no location with name \"spawn\" set :c");

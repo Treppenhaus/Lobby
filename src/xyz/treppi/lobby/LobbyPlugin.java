@@ -11,6 +11,7 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import xyz.treppi.lobby.compass.Compass;
+import xyz.treppi.lobby.eco.RandomCoindrop;
 import xyz.treppi.lobby.events.BuildMode;
 import xyz.treppi.lobby.events.InventorySort;
 import xyz.treppi.lobby.events.ItemDrop;
@@ -22,12 +23,14 @@ import xyz.treppi.lobby.events.PlayerJoin;
 import xyz.treppi.lobby.events.PlayerLeave;
 import xyz.treppi.lobby.forbiddencommands.CommandListener;
 import xyz.treppi.lobby.fun.CPSLife;
+import xyz.treppi.lobby.scoreboard.ScoreboardController;
 import xyz.treppi.lobby.soup.Soup;
 
 public class LobbyPlugin extends JavaPlugin {
 	private static String PATH = "plugins/Lobby/config.yml";
+	private static LobbyPlugin plugin;
 	public void onEnable() {
-		
+
 		Compass.fillItemList();
 		
 		getCommand("l").setExecutor(new LobbyCommand());
@@ -51,6 +54,15 @@ public class LobbyPlugin extends JavaPlugin {
 		pm.registerEvents(new CommandListener(), this);
 		pm.registerEvents(new Soup(), this);
 		pm.registerEvents(new CPSLife(), this);
+
+		pm.registerEvents(new RandomCoindrop(), this);
+
+		plugin = this;
+		ScoreboardController.startScoreboard();
+		RandomCoindrop.startCoindropper();
+	}
+	public static LobbyPlugin getPlugin() {
+		return plugin;
 	}
 	public static FileConfiguration getPluginConfig() {
 		return YamlConfiguration.loadConfiguration(new File(PATH));
