@@ -35,6 +35,8 @@ public class Soup implements Listener {
 		Player p = e.getPlayer();
 		
 		if(p.getItemInHand() == null) return;
+		if(!p.getItemInHand().hasItemMeta()) return;
+
 		ItemStack item = e.getItemDrop().getItemStack();
 		
 		if(item.getItemMeta().getDisplayName().equalsIgnoreCase(getEmptyItem().getItemMeta().getDisplayName())) {

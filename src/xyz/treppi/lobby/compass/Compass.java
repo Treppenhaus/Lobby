@@ -12,6 +12,7 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import xyz.treppi.lobby.soup.Soup;
 
 public class Compass implements Listener {
 	
@@ -65,6 +66,9 @@ public class Compass implements Listener {
 		
 		if(hand.getItemMeta().getDisplayName().equalsIgnoreCase(getItem().getItemMeta().getDisplayName())) {
 			p.openInventory(getInventory());
+		}
+		else if(hand.getItemMeta().getDisplayName().equalsIgnoreCase(Soup.getSoupItem().getItemMeta().getDisplayName())) {
+			p.setItemInHand(Soup.getEmptyItem());
 		}
 	}
 	public static void fillItemList() {

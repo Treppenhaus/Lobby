@@ -12,15 +12,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import xyz.treppi.lobby.compass.Compass;
 import xyz.treppi.lobby.eco.RandomCoindrop;
-import xyz.treppi.lobby.events.BuildMode;
-import xyz.treppi.lobby.events.InventorySort;
-import xyz.treppi.lobby.events.ItemDrop;
-import xyz.treppi.lobby.events.ItemPickup;
-import xyz.treppi.lobby.events.NoDamage;
-import xyz.treppi.lobby.events.NoPvP;
-import xyz.treppi.lobby.events.NoWeather;
-import xyz.treppi.lobby.events.PlayerJoin;
-import xyz.treppi.lobby.events.PlayerLeave;
+import xyz.treppi.lobby.events.*;
 import xyz.treppi.lobby.forbiddencommands.CommandListener;
 import xyz.treppi.lobby.fun.CPSLife;
 import xyz.treppi.lobby.scoreboard.ScoreboardController;
@@ -55,11 +47,13 @@ public class LobbyPlugin extends JavaPlugin {
 		pm.registerEvents(new Soup(), this);
 		pm.registerEvents(new CPSLife(), this);
 
-		pm.registerEvents(new RandomCoindrop(), this);
+		pm.registerEvents(new MobSpawn(), this);
+
+		if(ecoOn()) pm.registerEvents(new RandomCoindrop(), this);
 
 		plugin = this;
 		ScoreboardController.startScoreboard();
-		RandomCoindrop.startCoindropper();
+		if(ecoOn()) RandomCoindrop.startCoindropper();
 	}
 	public static LobbyPlugin getPlugin() {
 		return plugin;
@@ -82,5 +76,9 @@ public class LobbyPlugin extends JavaPlugin {
 
 		Random r = new Random();
 		return r.nextInt((max - min) + 1) + min;
+	}
+
+	public static boolean ecoOn() {
+		return false;
 	}
 }

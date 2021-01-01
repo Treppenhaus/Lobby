@@ -19,9 +19,10 @@ public class PlayerJoin implements Listener {
 		LobbyLocation spawn = LocationManager.getLocation("spawn");
 		
 		p.getInventory().clear();
-		p.getInventory().setItem(0, Compass.getItem());
+		//p.getInventory().setItem(0, Compass.getItem());
 		p.getInventory().setItem(1, Soup.getSoupItem());
 		p.setGameMode(GameMode.SURVIVAL);
+		p.setFoodLevel(20);
 		e.setJoinMessage("§b+ §7"+p.getName());
 		
 		if(spawn != null) p.teleport(spawn.getLocation());

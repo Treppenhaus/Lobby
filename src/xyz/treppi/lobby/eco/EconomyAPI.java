@@ -1,5 +1,7 @@
 package xyz.treppi.lobby.eco;
 
+import xyz.treppi.lobby.LobbyPlugin;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -13,6 +15,7 @@ public class EconomyAPI {
     private static final String url = "jdbc:mysql://"+host+":3306/"+database;
 
     public static void createUser(String uuid) {
+        if(!LobbyPlugin.ecoOn()) return;
         if(userExists(uuid)) return;
         try {
 
@@ -38,6 +41,7 @@ public class EconomyAPI {
     }
 
     public static void setCoins(String uuid, int amount) {
+        if(!LobbyPlugin.ecoOn()) return;
         try {
             int xp = getXP(uuid);
             String sql = "UPDATE "+database+" SET coins = "+amount+" WHERE uuid = \""+uuid+"\";";
@@ -51,6 +55,7 @@ public class EconomyAPI {
     }
 
     public static void setXP(String uuid, int amount) {
+        if(!LobbyPlugin.ecoOn()) return;
         try {
             int coins = getXP(uuid);
             String sql = "UPDATE "+database+" SET xp = "+amount+" WHERE uuid = \""+uuid+"\";";
@@ -64,6 +69,7 @@ public class EconomyAPI {
     }
 
     public static int getValue(String uuid, String column) {
+        if(!LobbyPlugin.ecoOn()) return 0;
         int xp = -1;
         try {
 
@@ -84,6 +90,7 @@ public class EconomyAPI {
     }
 
     public static boolean userExists(String uuid) {
+        if(!LobbyPlugin.ecoOn()) return false;
         try {
             Connection connection = createConnection();
             String query = "SELECt * FROM "+database+" WHERE uuid = \""+uuid+"\";";
@@ -99,6 +106,7 @@ public class EconomyAPI {
     }
 
     public static ResultSet executeQuery(String query, Connection connection) {
+        if(!LobbyPlugin.ecoOn()) return null;
         try {
 
             PreparedStatement statement = connection.prepareStatement(query);
@@ -109,6 +117,7 @@ public class EconomyAPI {
     }
 
     public static Connection createConnection() {
+        if(!LobbyPlugin.ecoOn()) return null;
         try {
 
             Class.forName("com.mysql.jdbc.Driver");
