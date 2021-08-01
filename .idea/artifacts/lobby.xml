@@ -2,7 +2,7 @@
   <artifact type="jar" build-on-make="true" name="lobby">
     <output-path>$PROJECT_DIR$/../../servers/treppi.eu/plugins</output-path>
     <root id="archive" name="lobby.jar">
-      <element id="file-copy" path="$PROJECT_DIR$/plugin.yml" />
+      <element id="file-copy" path="$PROJECT_DIR$/src/main/resources/plugin.yml" />
       <element id="module-source" name="Lobby" />
       <element id="module-output" name="Lobby" />
     </root>

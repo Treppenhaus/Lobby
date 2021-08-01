@@ -30,7 +30,7 @@ public class ScoreboardController {
     }
 
     public static void startScoreboard() {
-
+        if(!LobbyPlugin.enableScoreboard) return;
         Bukkit.getScheduler().scheduleSyncRepeatingTask(LobbyPlugin.getPlugin(), new BukkitRunnable() {
 
             @Override

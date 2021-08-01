@@ -21,6 +21,10 @@ import xyz.treppi.lobby.soup.Soup;
 public class LobbyPlugin extends JavaPlugin {
 	private static String PATH = "plugins/Lobby/config.yml";
 	private static LobbyPlugin plugin;
+
+
+	public  static final boolean enableScoreboard = false, enablesoup = false;
+
 	public void onEnable() {
 
 		Compass.fillItemList();
@@ -52,8 +56,9 @@ public class LobbyPlugin extends JavaPlugin {
 		if(ecoOn()) pm.registerEvents(new RandomCoindrop(), this);
 
 		plugin = this;
-		ScoreboardController.startScoreboard();
-		if(ecoOn()) RandomCoindrop.startCoindropper();
+
+		if(LobbyPlugin.enableScoreboard) ScoreboardController.startScoreboard();
+		if(LobbyPlugin.enableScoreboard) if(ecoOn()) RandomCoindrop.startCoindropper();
 	}
 	public static LobbyPlugin getPlugin() {
 		return plugin;

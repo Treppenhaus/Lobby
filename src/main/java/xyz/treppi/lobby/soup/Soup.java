@@ -20,6 +20,8 @@ public class Soup implements Listener {
 	
 	@EventHandler
 	public void onSoup(PlayerInteractEvent e) {
+		if(!LobbyPlugin.enablesoup) return;
+
 		Player p = e.getPlayer();
 		ItemStack hand = p.getItemInHand();
 		
@@ -32,6 +34,8 @@ public class Soup implements Listener {
 	}
 	@EventHandler
 	public void onDrop(PlayerDropItemEvent e) {
+		if(!LobbyPlugin.enablesoup) return;
+
 		Player p = e.getPlayer();
 		
 		if(p.getItemInHand() == null) return;
@@ -50,6 +54,8 @@ public class Soup implements Listener {
 	
 	@EventHandler
 	public void killSoup(ItemSpawnEvent e) {
+		if(!LobbyPlugin.enablesoup) return;
+
 		Entity entity = e.getEntity();
 		if(entity.getType() == EntityType.DROPPED_ITEM) {
 			Item item = (Item) entity;
