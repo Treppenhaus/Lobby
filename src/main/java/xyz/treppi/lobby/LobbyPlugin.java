@@ -13,7 +13,6 @@ import xyz.treppi.lobby.compass.Compass;
 import xyz.treppi.lobby.eco.RandomCoindrop;
 import xyz.treppi.lobby.events.*;
 import xyz.treppi.lobby.forbiddencommands.CommandListener;
-import xyz.treppi.lobby.fun.CPSLife;
 import xyz.treppi.lobby.scoreboard.ScoreboardController;
 public class LobbyPlugin extends JavaPlugin {
 	private static String PATH = "plugins/Lobby/config.yml";
@@ -40,13 +39,10 @@ public class LobbyPlugin extends JavaPlugin {
 		
 		pm.registerEvents(new NoPvP(), this);
 		pm.registerEvents(new NoDamage(), this);
+		pm.registerEvents(new NoHunger(), this);
 		pm.registerEvents(new Compass(), this);
-		
 		pm.registerEvents(new NoWeather(), this);
-		
 		pm.registerEvents(new CommandListener(), this);
-		pm.registerEvents(new CPSLife(), this);
-
 		pm.registerEvents(new MobSpawn(), this);
 
 		if(ecoOn()) pm.registerEvents(new RandomCoindrop(), this);
