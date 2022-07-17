@@ -9,11 +9,13 @@ public class CompassItem {
 	ItemStack icon;
 	LobbyLocation location;
 	int slot;
+	String cmd = null;
 	
-	public CompassItem(ItemStack icon, String locationname, int slot) {
+	public CompassItem(ItemStack icon, String locationname, String command, int slot) {
 		this.icon = icon;
 		this.slot = slot;
 		this.location = LocationManager.getLocation(locationname);
+		this.cmd = command;
 	}
 
 	public ItemStack getIcon() {
@@ -39,6 +41,8 @@ public class CompassItem {
 	public void setSlot(int slot) {
 		this.slot = slot;
 	}
-	
-	
+
+	public String getCmd() {
+		return cmd;
+	}
 }

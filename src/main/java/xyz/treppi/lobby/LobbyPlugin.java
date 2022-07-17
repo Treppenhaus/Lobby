@@ -2,7 +2,6 @@ package xyz.treppi.lobby;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Random;
 
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -16,8 +15,6 @@ import xyz.treppi.lobby.events.*;
 import xyz.treppi.lobby.forbiddencommands.CommandListener;
 import xyz.treppi.lobby.fun.CPSLife;
 import xyz.treppi.lobby.scoreboard.ScoreboardController;
-import xyz.treppi.lobby.soup.Soup;
-
 public class LobbyPlugin extends JavaPlugin {
 	private static String PATH = "plugins/Lobby/config.yml";
 	private static LobbyPlugin plugin;
@@ -48,7 +45,6 @@ public class LobbyPlugin extends JavaPlugin {
 		pm.registerEvents(new NoWeather(), this);
 		
 		pm.registerEvents(new CommandListener(), this);
-		pm.registerEvents(new Soup(), this);
 		pm.registerEvents(new CPSLife(), this);
 
 		pm.registerEvents(new MobSpawn(), this);
@@ -59,6 +55,7 @@ public class LobbyPlugin extends JavaPlugin {
 
 		if(LobbyPlugin.enableScoreboard) ScoreboardController.startScoreboard();
 		if(LobbyPlugin.enableScoreboard) if(ecoOn()) RandomCoindrop.startCoindropper();
+		this.getServer().getMessenger().registerOutgoingPluginChannel(getPlugin(), "BungeeCord");
 	}
 	public static LobbyPlugin getPlugin() {
 		return plugin;
@@ -72,15 +69,6 @@ public class LobbyPlugin extends JavaPlugin {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}
-	public static int getRandomNumberInRange(int min, int max) {
-
-		if (min >= max) {
-			throw new IllegalArgumentException("max must be greater than min");
-		}
-
-		Random r = new Random();
-		return r.nextInt((max - min) + 1) + min;
 	}
 
 	public static boolean ecoOn() {
